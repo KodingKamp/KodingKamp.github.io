@@ -1,0 +1,33 @@
+@import 'src/app/components/shared/styles/variables.scss';
+
+.march-settings-component-container {
+    background: rgb(230, 230, 230);
+    width: 100vw;
+    height: 100vh;
+    color: $nasa-blue;
+    
+    scroll-snap-align: start;
+
+    .outer-grid {
+        
+        .inner-grid {
+            width: 100%;
+
+            .image-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .thumbnail {
+                    width: 50%;
+                    height: 50%;
+                }
+            }
+        }
+
+        .selected-image {
+            width: 50%; 
+            height: 50%; 
+        }
+    }
+}

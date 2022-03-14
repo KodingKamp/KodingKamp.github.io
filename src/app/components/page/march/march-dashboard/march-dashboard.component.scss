@@ -1,0 +1,46 @@
+@import 'src/app/components/shared/styles/variables.scss';
+
+.march-dashboard-component-container {
+    width: 100vw;
+    height: 100vh;
+    color: $nasa-blue;
+
+    scroll-snap-align: start;
+
+    .search-form-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        &:hover {
+            .search-bar-form-field {
+                bottom: 0;
+                transition: 0.5s;
+            }
+        }
+
+        .search-bar-form-field {
+            width: 40%;
+            cursor: text;
+
+            bottom: 100px;
+        }
+    }
+
+    .scroll-message {
+        margin-bottom: 0;
+        cursor: default;
+        color: rgb(97, 97, 97);
+
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-name: bounce;
+        animation-timing-function: linear;
+    }
+}
+
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}

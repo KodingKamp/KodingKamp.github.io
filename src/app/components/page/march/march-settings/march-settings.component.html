@@ -1,0 +1,28 @@
+<div class="march-settings-component-container">
+    <mat-grid-list cols="3" rowHeight="33.33%" class="outer-grid">
+        <mat-grid-tile [colspan]="3">
+            <mat-grid-list cols="7" class="inner-grid">
+                <mat-grid-tile *ngFor="let img of APODList">
+                    <div class="image-container">
+                        <label>{{img.date}}</label>
+                        <img class="thumbnail"
+                            src="{{img.url}}"
+                            alt="{{img.url}}">
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+            <img class="selected-image"
+                src="{{todaysPOD}}"
+                alt="{{todaysPOD}}">
+        </mat-grid-tile>
+        <mat-grid-tile [rowspan]="2">
+            <h4>Selected:</h4>
+            <!-- <p>{{todaysPOD.url}}</p> -->
+            <!-- <p>{{todaysPOD.date}}</p>
+            <p>{{todaysPOD.explanation}}</p>
+            <p>{{todaysPOD.url}}</p> -->
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
