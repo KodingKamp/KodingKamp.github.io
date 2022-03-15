@@ -1,7 +1,7 @@
 @import 'src/app/components/shared/styles/variables.scss';
 
 .march-settings-component-container {
-    background: rgb(230, 230, 230);
+    background: rgb(236, 236, 236);
     width: 100vw;
     height: 100vh;
     color: $nasa-blue;
@@ -21,16 +21,17 @@
                         width: 100%;
 
                         .image-container {
+                            height: 100%;
                             display: flex;
                             flex-direction: column;
                             align-items: center;
+                            justify-content: space-evenly;
+
+                            cursor: pointer;
 
                             .date-label {
                                 font-weight: bold;
                                 font-size: 1.5em;
-                                &-date {
-                                    font-weight: normal;
-                                }
                             }
 
                             .thumbnail {
@@ -49,8 +50,25 @@
                 }
 
                 &-right{
-                    display: flex;
-                    flex-direction: column;
+                    .info-container {
+                        padding: 15px;
+
+                        .info-label {
+                            color: $nasa-red;
+                            font-size: 1.25em;
+                        }
+
+                        .description {
+                            max-height: 250px;
+                            overflow-y: auto;
+                        }
+
+                        .button-container {
+                            display: flex;
+                            justify-content: center;
+                            gap: 30px;
+                        }
+                    }
                 }
             }
         }

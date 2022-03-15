@@ -7,17 +7,15 @@
                     <mat-grid-tile *ngFor="let Dayta of APODList">
                         <div class="image-container"
                             (click)="selectedDay(Dayta)">
-                            <label class="date-label">
-                                <span class="date-label-date">Date:</span> {{Dayta.date}}
-                            </label>
-                            <img class="thumbnail"
-                                src="{{Dayta.url}}"
-                                alt="{{Dayta.title}}"
-                                *ngIf="Dayta.isImage">
-                            <label *ngIf="!Dayta.isImage">
-                                No image for this day.<br>
-                                Video is not yet supported.
-                            </label>
+                                <label class="date-label">{{Dayta.date}}</label>
+                                <img class="thumbnail"
+                                    src="{{Dayta.url}}"
+                                    alt="{{Dayta.title}}"
+                                    *ngIf="Dayta.isImage">
+                                <label *ngIf="!Dayta.isImage">
+                                    No image for this day.<br>
+                                    Video is not yet supported.
+                                </label>
                         </div>
                     </mat-grid-tile>
                 </mat-grid-list>
@@ -29,16 +27,18 @@
             </mat-grid-tile>
 
             <mat-grid-tile class="inner-container container-right" [rowspan]="2">
-                <h4>Selected:</h4>
-                <div>
-                    <p>Date: {{selectedDateData.date}}</p>
-                    <p>Title: {{selectedDateData.title}}</p>
-                    <p>Description: {{selectedDateData.explanation}}</p>
-                    <p>Author: {{selectedDateData.copyright}}</p>
-                </div>
-                <div>
-                    <button (click)="saveSelected()">Save as Background</button>
-                    <button (click)="clearSelected()">Clear Saved Background</button>
+                <div class="info-container">
+                    <h2>Information:</h2>
+                    <div>
+                        <p><label class="info-label">Date:</label> {{selectedDateData.date}}</p>
+                        <p><label class="info-label">Title:</label> {{selectedDateData.title}}</p>
+                        <p class="description"><label class="info-label">Description:</label> {{selectedDateData.explanation}}</p>
+                        <p><label class="info-label">Author:</label> {{selectedDateData.copyright}}</p>
+                    </div>
+                    <div class="button-container">
+                        <button mat-raised-button (click)="saveSelected()" color="primary">Save as Background</button>
+                        <button mat-raised-button (click)="clearSelected()">Clear Saved Background</button>
+                    </div>
                 </div>
             </mat-grid-tile>
 
