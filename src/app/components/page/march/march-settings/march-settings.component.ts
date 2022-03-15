@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NasaAPODResponse } from 'src/app/models/march/nasa-apodresponse';
 import { MarchService } from 'src/app/services/march.service';
 
 @Component({
@@ -10,6 +11,8 @@ export class MarchSettingsComponent implements OnInit {
   @Output() changedSelectionEvent = new EventEmitter();
 
   private _dates = [];
+  private _startDate;
+  private _endDate;
   private _cacheKey = "march-background-img-url";
 
   // exposed variabled
@@ -27,21 +30,20 @@ export class MarchSettingsComponent implements OnInit {
   }
 
   initializeDates(): void {
-    const dayInMilliseconds = 86400000,
-      today = new Date();
+    const dayInMilliseconds = 86400000;
+    let today = new Date();
+    today.setHours(0)
+    today.setMinutes(0)
+    today.setSeconds(0)
+    today.setMilliseconds(0)
 
-    for (let daysAgo = 6; daysAgo >= 0; daysAgo--) {
-      this._dates.push(
-        this.convertToDateString(
-          new Date( today.getTime() - (daysAgo * dayInMilliseconds) )
-        )
-      );
-    }
+    this._endDate = this.convertToDateString(today);
+    this._startDate = this.convertToDateString(new Date(today.getTime() - (dayInMilliseconds * 6)));
   }
 
   getLast7DaysImages(): void {
     this.APODStatus = "Pending";
-    this._marchService.getPicturesForLast7Days(this._dates[0], this._dates[6])
+    this._marchService.getPicturesForLast7Days(this._startDate, this._endDate)
       .subscribe((response) => {
         let responseDTO = response.map(APOD => {
           return {
@@ -49,6 +51,11 @@ export class MarchSettingsComponent implements OnInit {
             isImage: !APOD.url.includes('youtube.com')
           }
         });
+
+        let itemCount = responseDTO.length;
+        if (itemCount > 7)
+          responseDTO.shift();
+
         this.selectedDateData = responseDTO[6];
         this.APODList = responseDTO;
         this.APODStatus = "Loaded";
