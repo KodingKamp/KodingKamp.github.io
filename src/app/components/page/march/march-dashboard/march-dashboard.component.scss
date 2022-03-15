@@ -5,6 +5,9 @@
     height: 100vh;
     color: $nasa-blue;
 
+    background-repeat: no-repeat;
+    background-size: cover;
+
     scroll-snap-align: start;
 
     .search-form-container {
@@ -22,6 +25,7 @@
         .search-bar-form-field {
             width: 40%;
             cursor: text;
+            background: rgba(233, 233, 233, 0.562);
 
             bottom: 100px;
         }

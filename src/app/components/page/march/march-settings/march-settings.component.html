@@ -1,28 +1,56 @@
 <div class="march-settings-component-container">
-    <mat-grid-list cols="3" rowHeight="33.33%" class="outer-grid">
-        <mat-grid-tile [colspan]="3">
-            <mat-grid-list cols="7" class="inner-grid">
-                <mat-grid-tile *ngFor="let img of APODList">
-                    <div class="image-container">
-                        <label>{{img.date}}</label>
-                        <img class="thumbnail"
-                            src="{{img.url}}"
-                            alt="{{img.url}}">
-                    </div>
-                </mat-grid-tile>
-            </mat-grid-list>
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="2" [rowspan]="2">
-            <img class="selected-image"
-                src="{{todaysPOD}}"
-                alt="{{todaysPOD}}">
-        </mat-grid-tile>
-        <mat-grid-tile [rowspan]="2">
-            <h4>Selected:</h4>
-            <!-- <p>{{todaysPOD.url}}</p> -->
-            <!-- <p>{{todaysPOD.date}}</p>
-            <p>{{todaysPOD.explanation}}</p>
-            <p>{{todaysPOD.url}}</p> -->
-        </mat-grid-tile>
-    </mat-grid-list>
+    <div *ngIf="APODStatus === 'Loaded'" class="status-loaded">
+        <mat-grid-list cols="3" rowHeight="33.33%" class="outer-grid">
+            
+            <mat-grid-tile class="inner-container container-top" [colspan]="3">
+                <mat-grid-list cols="7" class="inner-grid">
+                    <mat-grid-tile *ngFor="let Dayta of APODList">
+                        <div class="image-container"
+                            (click)="selectedDay(Dayta)">
+                            <label class="date-label">
+                                <span class="date-label-date">Date:</span> {{Dayta.date}}
+                            </label>
+                            <img class="thumbnail"
+                                src="{{Dayta.url}}"
+                                alt="{{Dayta.title}}"
+                                *ngIf="Dayta.isImage">
+                            <label *ngIf="!Dayta.isImage">
+                                No image for this day.<br>
+                                Video is not yet supported.
+                            </label>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-grid-tile>
+
+            <mat-grid-tile class="inner-container container-left" [colspan]="2" [rowspan]="2">
+                <img src="{{selectedDateData.url}}" *ngIf="selectedDateData.isImage">
+                <label *ngIf="!selectedDateData.isImage">No image for this day. Video is not yet supported.</label>
+            </mat-grid-tile>
+
+            <mat-grid-tile class="inner-container container-right" [rowspan]="2">
+                <h4>Selected:</h4>
+                <div>
+                    <p>Date: {{selectedDateData.date}}</p>
+                    <p>Title: {{selectedDateData.title}}</p>
+                    <p>Description: {{selectedDateData.explanation}}</p>
+                    <p>Author: {{selectedDateData.copyright}}</p>
+                </div>
+                <div>
+                    <button (click)="saveSelected()">Save as Background</button>
+                    <button (click)="clearSelected()">Clear Saved Background</button>
+                </div>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+    </div>
+    <div *ngIf="APODStatus === 'Pending'" class="status-pending">
+        <h2>Data is loading...</h2>
+    </div>
+    <div *ngIf="APODStatus === 'Not Loaded'" class="status-not-loaded">
+        <h2>Data not loaded.</h2>
+    </div>
+    <div *ngIf="APODStatus === 'Error'" class="status-not-loaded">
+        <h2>Error loading data.</h2>
+    </div>
 </div>

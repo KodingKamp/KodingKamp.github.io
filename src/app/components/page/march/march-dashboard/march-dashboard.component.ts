@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MarchService } from 'src/app/services/march.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { MarchService } from 'src/app/services/march.service';
   styleUrls: ['./march-dashboard.component.scss']
 })
 export class MarchDashboardComponent implements OnInit {
+  @ViewChild('dashboardContainer') dashboardContainer;
 
   // exposed variables
   backgroundImageUrl = null;
@@ -20,7 +21,7 @@ export class MarchDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getBackgroundImage();
   }
-
+  
   getBackgroundImage(): void {
     this.backgroundImageUrl = localStorage.getItem('march-background-img-url');
     this.isBackgroundLoaded = this.backgroundImageUrl !== null;
