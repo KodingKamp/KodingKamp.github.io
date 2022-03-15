@@ -12,7 +12,7 @@
                                     src="{{Dayta.url}}"
                                     alt="{{Dayta.title}}"
                                     *ngIf="Dayta.isImage">
-                                <label *ngIf="!Dayta.isImage">
+                                <label *ngIf="!Dayta.isImage" class="no-image">
                                     No image for this day.<br>
                                     Video is not yet supported.
                                 </label>
@@ -23,7 +23,7 @@
 
             <mat-grid-tile class="inner-container container-left" [colspan]="2" [rowspan]="2">
                 <img src="{{selectedDateData.url}}" *ngIf="selectedDateData.isImage">
-                <label *ngIf="!selectedDateData.isImage">No image for this day. Video is not yet supported.</label>
+                <label *ngIf="!selectedDateData.isImage" class="no-image">No image for this day. Video is not yet supported.</label>
             </mat-grid-tile>
 
             <mat-grid-tile class="inner-container container-right" [rowspan]="2">
@@ -36,7 +36,7 @@
                         <p><label class="info-label">Author:</label> {{selectedDateData.copyright}}</p>
                     </div>
                     <div class="button-container">
-                        <button mat-raised-button (click)="saveSelected()" color="primary">Save as Background</button>
+                        <button mat-raised-button (click)="saveSelected()" color="accent" [disabled]="!selectedDateData.isImage">Save as Background</button>
                         <button mat-raised-button (click)="clearSelected()">Clear Saved Background</button>
                     </div>
                 </div>

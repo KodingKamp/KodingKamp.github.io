@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MarchService } from 'src/app/services/march.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { MarchService } from 'src/app/services/march.service';
   styleUrls: ['./march-settings.component.scss']
 })
 export class MarchSettingsComponent implements OnInit {
+  @Output() changedSelectionEvent = new EventEmitter();
+
   private _dates = [];
   private _cacheKey = "march-background-img-url";
 
@@ -75,11 +77,14 @@ export class MarchSettingsComponent implements OnInit {
   }
 
   saveSelected() {
-    if (this.selectedDateData.isImage)
+    if (this.selectedDateData.isImage) {
       localStorage.setItem(this._cacheKey, this.selectedDateData.url);
+      this.changedSelectionEvent.emit();
+    }
   }
 
   clearSelected() {
     localStorage.removeItem(this._cacheKey);
+    this.changedSelectionEvent.emit();
   }
 }

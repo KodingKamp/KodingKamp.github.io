@@ -15,8 +15,12 @@
 
     .outer-grid {
         .inner-container {
+            .no-image {
+                color: $nasa-red;
+            }
+
             &.container {
-                &-top{        
+                &-top{
                     .inner-grid {
                         width: 100%;
 
@@ -32,6 +36,7 @@
                             .date-label {
                                 font-weight: bold;
                                 font-size: 1.5em;
+                                cursor: pointer;
                             }
 
                             .thumbnail {
@@ -50,6 +55,8 @@
                 }
 
                 &-right{
+                    background: #d9d9d9;
+
                     .info-container {
                         padding: 15px;
 
