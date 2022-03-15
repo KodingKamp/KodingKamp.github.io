@@ -25,7 +25,7 @@ export class MarchService {
     return this.http.get<NasaAPODResponse>(query);
   }
 
-  getPicturesForLast7Days(startDate, endDate): Observable<NasaAPODResponse[]> {
+  getPicturesForLast7Days(startDate: string, endDate: string): Observable<NasaAPODResponse[]> {
     let query = `${this.nasaAPODUrl}?api_key=${environment.NasaApiKey}&start_date=${startDate}&end_date=${endDate}`;
     
       return this.http.get<NasaAPODResponse[]>(query);
