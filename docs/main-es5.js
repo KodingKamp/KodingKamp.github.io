@@ -1061,12 +1061,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "initializeDates",
         value: function initializeDates() {
-          var dayInMilliseconds = 86400000,
-              today = new Date();
-
-          for (var daysAgo = 6; daysAgo >= 0; daysAgo--) {
-            this._dates.push(this.convertToDateString(new Date(today.getTime() - daysAgo * dayInMilliseconds)));
-          }
+          var dayInMilliseconds = 86400000;
+          var today = new Date();
+          today.setHours(0);
+          today.setMinutes(0);
+          today.setSeconds(0);
+          today.setMilliseconds(0);
+          this._endDate = this.convertToDateString(today);
+          this._startDate = this.convertToDateString(new Date(today.getTime() - dayInMilliseconds * 6));
         }
       }, {
         key: "getLast7DaysImages",
@@ -1075,12 +1077,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.APODStatus = "Pending";
 
-          this._marchService.getPicturesForLast7Days(this._dates[0], this._dates[6]).subscribe(function (response) {
+          this._marchService.getPicturesForLast7Days(this._startDate, this._endDate).subscribe(function (response) {
             var responseDTO = response.map(function (APOD) {
               return Object.assign(Object.assign({}, APOD), {
                 isImage: !APOD.url.includes('youtube.com')
               });
             });
+            var itemCount = responseDTO.length;
+            if (itemCount > 7) responseDTO.shift();
             _this.selectedDateData = responseDTO[6];
             _this.APODList = responseDTO;
             _this.APODStatus = "Loaded";
