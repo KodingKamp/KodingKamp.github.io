@@ -67,12 +67,12 @@ export class MarchSettingsComponent implements OnInit {
 
   convertToDateString(date: Date): string {
     const [
-      year, 
-      month, 
+      year,
+      month,
       day
     ] = [
       date.getFullYear(), 
-      date.getMonth(), 
+      date.getMonth() + 1, 
       date.getDate()
     ];
     
