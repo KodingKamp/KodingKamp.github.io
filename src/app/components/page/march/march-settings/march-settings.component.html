@@ -22,12 +22,12 @@
             </mat-grid-tile>
 
             <mat-grid-tile class="inner-container container-left" [colspan]="2" [rowspan]="2">
-                <img src="{{selectedDateData.url}}" *ngIf="selectedDateData.isImage">
-                <label *ngIf="!selectedDateData.isImage" class="no-image">No image for this day. Video is not yet supported.</label>
+                <img src="{{selectedDateData?.url}}" *ngIf="selectedDateData && selectedDateData.isImage">
+                <label *ngIf="selectedDateData && !selectedDateData.isImage" class="no-image">No image for this day. Video is not yet supported.</label>
             </mat-grid-tile>
 
             <mat-grid-tile class="inner-container container-right" [rowspan]="2">
-                <div class="info-container">
+                <div class="info-container" *ngIf="selectedDateData">
                     <h2>Information:</h2>
                     <div>
                         <p><label class="info-label">Date:</label> {{selectedDateData.date}}</p>
