@@ -2,11 +2,11 @@ import { useMemo, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { HomePage } from '../Projects';
-import Tab from '@mui/material/Tab';
+import Tab from '@mui/material/Tab'; // eslint-disable-line no-unused-vars
 import Tabs from '@mui/material/Tabs';
-import './App.scss';
+import './AppContainer.scss';
 
-const App = () => {
+const AppContainer = () => {
   // state
   const [selectedTab, setTab] = useState(-1);
 
@@ -83,4 +83,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default AppContainer;
