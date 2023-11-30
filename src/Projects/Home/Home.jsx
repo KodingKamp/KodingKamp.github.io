@@ -12,12 +12,15 @@ const Home = () => {
 
   // effects
 
-  // views
   return (
     <Box className='home-component'>
       Home component
     </Box>
   );
+};
+
+Home.prototype = {
+
 };
 
 export default Home;

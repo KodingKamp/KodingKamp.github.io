@@ -20,16 +20,13 @@ const AppContainer = () => {
       }
     },
     [selectedTab]
-  )
+  );
 
   // functions
   const handleTabChange = (_, tab) => {
     setTab(tab);
-  }
+  };
 
-  // effects
-
-  // views
   return (
     <Box id='app-container'>
       <Box className='navbar'>

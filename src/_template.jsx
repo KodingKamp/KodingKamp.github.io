@@ -13,12 +13,13 @@ const Template = () => {
 
   // effects
 
-  // views
   return (
     <Box className='-component'>
       Template component
     </Box>
   );
 };
+
+Template.prototype = {};
 
 export default Template;
