@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 const Home = () => {
   // properties
@@ -12,8 +13,10 @@ const Home = () => {
   // effects
 
   return (
-    <Box className='home-component'>
-      Home component
+    <Box id='home-component'>
+      <Typography variant='h1'>
+        Kamp Duong
+      </Typography>
     </Box>
   );
 };
