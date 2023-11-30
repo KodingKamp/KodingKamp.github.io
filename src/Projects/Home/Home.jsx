@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import './Home.scss';
 
 const Home = () => {
   // properties

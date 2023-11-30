@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import { HomePage } from '../Projects';
 import Tab from '@mui/material/Tab'; // eslint-disable-line no-unused-vars
 import Tabs from '@mui/material/Tabs';
-import './AppContainer.scss';
 
 const AppContainer = () => {
   // state
