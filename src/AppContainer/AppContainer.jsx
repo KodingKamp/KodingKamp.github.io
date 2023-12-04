@@ -1,19 +1,20 @@
 import { useMemo, useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { HomePage } from '../Projects';
+import { HomePage, LifeCounter } from '../Projects';
 import Tab from '@mui/material/Tab'; // eslint-disable-line no-unused-vars
 import Tabs from '@mui/material/Tabs';
 
 const AppContainer = () => {
   // state
-  const [selectedTab, setTab] = useState(-1);
+  const [selectedTab, setTab] = useState(false);
 
   // variables
   const activeTabComponent = useMemo(
     () => {
       switch (selectedTab) {
-        case -1:
+        case 0:
+          return <LifeCounter />
         default:
           return <HomePage />
       }
@@ -33,7 +34,7 @@ const AppContainer = () => {
           <Button
             disableRipple
             color='inherit'
-            onClick={() => handleTabChange(null, -1)}
+            onClick={() => handleTabChange(null, false)}
           >
             Koding Kamp
           </Button>
@@ -45,7 +46,7 @@ const AppContainer = () => {
           value={selectedTab}
           onChange={handleTabChange}
         >
-          {/* <Tab label='One' /> */}
+          <Tab label='Life Counter' />
           {/* <Tab label='Two' /> */}
           {/* <Tab label='Three' /> */}
           {/* <Tab label='Four' /> */}

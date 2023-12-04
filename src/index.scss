@@ -1,7 +1,8 @@
-body {
+body, h1 {
   margin: 0;
 }
 
 // component sty;es
 @import './styles/AppContainer.scss';
 @import './styles/Home.scss';
+@import './styles/LifeCounter.scss';

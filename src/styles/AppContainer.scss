@@ -12,7 +12,10 @@
     color: #FFF;
   }
 
-  .content > div {
-    padding: 1rem;
+  .content {
+    .component-container {
+      padding: 1rem;
+      height: calc(100% - 2rem); // -2rem for padding
+    }
   }
 }
