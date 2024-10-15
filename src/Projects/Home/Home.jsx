@@ -2,8 +2,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 const Home = () => {
-  // properties
-
   // state
 
   // variables
@@ -13,16 +11,12 @@ const Home = () => {
   // effects
 
   return (
-    <Box id='home-component'>
+    <Box id='home-component' className='component-container'>
       <Typography variant='h1'>
         Kamp Duong
       </Typography>
     </Box>
   );
-};
-
-Home.prototype = {
-
 };
 
 export default Home;

@@ -1,7 +1,24 @@
-body {
+body, h1, h2, h3, h4, h5, p {
   margin: 0;
+}
+
+body {
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+  width: 100dvw;
+  overflow: hidden;
+  display: grid;
+  background-color: rebeccapurple;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#root {
+  padding: 10px;
+  display: grid;
 }
 
 // component sty;es
 @import './styles/AppContainer.scss';
 @import './styles/Home.scss';
+@import './styles/LifeCounter.scss';

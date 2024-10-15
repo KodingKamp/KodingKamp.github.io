@@ -2,8 +2,6 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 
 const Template = () => {
-  // properties
-
   // state
 
   // variables
@@ -13,12 +11,10 @@ const Template = () => {
   // effects
 
   return (
-    <Box className='-component'>
+    <Box id='' className='component-container'>
       Template component
     </Box>
   );
 };
-
-Template.prototype = {};
 
 export default Template;
