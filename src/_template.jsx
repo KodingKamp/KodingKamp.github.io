@@ -11,7 +11,7 @@ const Template = () => {
   // effects
 
   return (
-    <Box id="" className='component-container'>
+    <Box id='' className='component-container'>
       Template component
     </Box>
   );

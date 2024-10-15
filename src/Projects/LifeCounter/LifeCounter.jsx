@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import LifeCard from './LifeCard/LifeCard';
-import { Button, Card, CardContent, IconButton, Typography } from '@mui/material';
+import { Button, Card, CardContent, Typography } from '@mui/material';
 import { AddCircleOutline } from '@mui/icons-material';
 
 const INITIAL_LIFE_POINT_VALUE = 20;

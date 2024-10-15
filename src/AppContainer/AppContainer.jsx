@@ -1,81 +1,43 @@
-import { useMemo, useState } from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import { HomePage, LifeCounter } from '../Projects';
-import Tab from '@mui/material/Tab'; // eslint-disable-line no-unused-vars
-import Tabs from '@mui/material/Tabs';
+import { useCallback, useState } from 'react';
+import { Box } from '@mui/material';
+import { Contact, Portrait, Social, Title } from '../Modules';
 
 const AppContainer = () => {
   // state
-  const [selectedTab, setTab] = useState(false);
+  const [focusComponent, setFocusComponent] = useState(null);
 
-  // variables
-  const activeTabComponent = useMemo(
+  const handleFocusContent = useCallback((contentName) =>
     () => {
-      switch (selectedTab) {
-        case 0:
-          return <LifeCounter />
-        default:
-          return <HomePage />
-      }
-    },
-    [selectedTab]
+      setFocusComponent(contentName);
+    }, []
   );
 
-  // functions
-  const handleTabChange = (_, tab) => {
-    setTab(tab);
+  // variables
+  const components = {
+    Details: 'Details',
+    Experience: 'Experience',
+    Skills: 'Skills',
+    Projects: 'Projects',
   };
 
   return (
     <Box id='app-container'>
-      <Box className='navbar'>
-        <Box>
-          <Button
-            disableRipple
-            color='inherit'
-            onClick={() => handleTabChange(null, false)}
-          >
-            Koding Kamp
-          </Button>
-        </Box>
-        <Tabs
-          variant='scrollable'
-          aria-label='scrollable nav links'
-          textColor='inherit'
-          value={selectedTab}
-          onChange={handleTabChange}
-        >
-          <Tab label='Life Counter' />
-          {/* <Tab label='Two' /> */}
-          {/* <Tab label='Three' /> */}
-          {/* <Tab label='Four' /> */}
-          {/* <Tab label='Five' /> */}
-          {/* <Tab label='Six' /> */}
-          {/* <Tab label='Seven' /> */}
-          {/* <Tab label='Eight' /> */}
-          {/* <Tab label='Nine' /> */}
-          {/* <Tab label='Ten' /> */}
-          {/* <Tab label='Eleven' /> */}
-          {/* <Tab label='Twelve' />/ */}
-          {/* <Tab label='Thirteen' /> */}
-          {/* <Tab label='Forteen' /> */}
-          {/* <Tab label='Fifteen' /> */}
-          {/* <Tab label='Sixteen' /> */}
-          {/* <Tab label='Seventeen' /> */}
-          {/* <Tab label='Eighteen' /> */}
-          {/* <Tab label='Nineteen' /> */}
-          {/* <Tab label='Twenty' /> */}
-          {/* <Tab label='Twenty-One' /> */}
-          {/* <Tab label='Twenty-Two' /> */}
-          {/* <Tab label='Twenty-Three' /> */}
-          {/* <Tab label='Twenty-Four' /> */}
-          {/* <Tab label='Twenty-Five' /> */}
-        </Tabs>
+      <Portrait className="module" gridRow='span 2' />
+      <Title className="module expandable" gridColumn='span 2' onClick={handleFocusContent(components.Details)} />
+      <Box className="module" gridRow='span 2' onClick={handleFocusContent()}>
+        Experience / Education
       </Box>
-      <Box className='content'>
-        {activeTabComponent}
+      <Box className="module no-bg" gridRow='span 2' gridColumn='span 2' onClick={handleFocusContent()}>
+        Project slideshow
       </Box>
+      <Box className="module" gridRow='span 2' onClick={handleFocusContent()}>
+
+      </Box>
+      <Box className="module" gridRow='span 2' onClick={handleFocusContent()}>
+        Skills
+      </Box>
+      <Contact className="module" onClick={handleFocusContent()} />
+      <Social className="module" onClick={handleFocusContent()} />
     </Box>
   );
 };
